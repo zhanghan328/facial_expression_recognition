@@ -8,8 +8,12 @@ Created on Wed Mar 15 18:26:06 2017
 
 import pandas as pd
 import numpy as np
+import os
 import cv2
-data = pd.read_csv('../fer2013.csv')
+data = pd.read_csv('./fer2013.csv')
+for i in ['train','test']:
+    for k in range(6):
+        os.makedirs('data/%s/%s'%(i,k))
 for i in range(len(data)):
     label = data['emotion'][i]
     image = data['pixels'][i].split(' ')
